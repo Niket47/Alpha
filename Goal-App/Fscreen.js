@@ -1,20 +1,43 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import { Button, Divider, TextInput } from 'react-native-paper';
+import {
+  View,
+  Button,
+  FlatList,
+  Text,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
+import GoalList from './Components/GoalList';
+import GoalInput from './Components/GoalInput';
 
 const Fscreen = () => {
   const theme = useTheme();
-  const [enteredgoal, setEnteredgoal] = useState('');
+  const [visiblemodal, setVisiblemodal] = useState(false);
   const [goallist, setGoallist] = useState([]);
-  const goalinputhandler = enterdtext => {
-    setEnteredgoal(enterdtext);
-  };
-  const addgoaalhandler = () => {
+
+  const addgoaalhandler = enteredgoal => {
     // console.log(enteredgoal);
-    setGoallist(currentgoal => [...currentgoal, enteredgoal]);
+    setGoallist(currentgoal => [
+      ...currentgoal,
+      { text: enteredgoal, id: Math.random().toString() },
+    ]);
     console.log('object', goallist);
-    setEnteredgoal('');
+    closemodal();
+  };
+
+  const deletehandler = id => {
+    console.log('delet');
+    setGoallist(currentgoal => {
+      return currentgoal.filter(goal => goal.id !== id);
+    });
+  };
+  const modalhandler = () => {
+    setVisiblemodal(true);
+  };
+  const closemodal = () => {
+    setVisiblemodal(false);
   };
   return (
     <>
@@ -22,44 +45,33 @@ const Fscreen = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginHorizontal: 10,
             marginVertical: 20,
           }}>
-          <TextInput
-            style={styles.textinput}
-            label="Text"
-            value={enteredgoal}
-            onChangeText={goalinputhandler}
+          <Button onPress={modalhandler} title="visible modal" />
+          <GoalInput
+            showmodal={visiblemodal}
+            onbtnPress={addgoaalhandler}
+            onmodalclose={closemodal}
           />
-          <Button mode="contained" onPress={addgoaalhandler}>
-            Add goal
-          </Button>
         </View>
-        <View
-          style={{
-            paddingHorizontal: 10,
-          }}>
-          <ScrollView>
-            {goallist.map((items, index) => {
+        <ScrollView>
+          <FlatList
+            data={goallist}
+            renderItem={({ item }) => {
               return (
-                <View
-                  style={{
-                    marginVertical: 5,
-                    paddingVertical: 10,
-                    paddingHorizontal: 10,
-                    backgroundColor: '#c2c2c2',
-                    borderRadius: 10,
-                  }}>
-                  <Text style={{ fontSize: 20 }} key={index}>
-                    {items}
-                  </Text>
-                  <Divider theme={{ colors: { primary: 'green' } }} />
-                </View>
+                <GoalList
+                  text={item.text}
+                  id={item.id}
+                  onPressFunction={deletehandler}
+                />
               );
-            })}
-          </ScrollView>
-        </View>
+            }}
+            keyExtractor={item => item.id}
+          />
+        </ScrollView>
       </View>
     </>
   );
