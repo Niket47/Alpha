@@ -1,0 +1,42 @@
+export const DATA = [
+  {
+    id: 1,
+    url: 'https://picsum.photos/id/1/200/300',
+    name: 'Mens Casual Premium ',
+    brand: 'puma',
+    price: 1090,
+    qty: 0,
+  },
+  {
+    id: 2,
+    url: 'https://picsum.photos/id/2/200/300',
+    name: 'Mens Casual Slim Fit',
+    brand: 'Nike',
+    price: 2200,
+    qty: 0,
+  },
+  {
+    id: 3,
+    url: 'https://picsum.photos/id/3/200/300',
+    name: "John Hardy Women's ",
+    brand: 'Bata',
+    price: 1300,
+    qty: 0,
+  },
+  {
+    id: 4,
+    url: 'https://picsum.photos/id/4/200/300',
+    name: 'White Gold Plated Princess',
+    brand: 'Woodland',
+    price: 1090,
+    qty: 0,
+  },
+  {
+    id: 5,
+    url: 'https://picsum.photos/id/5/200/300',
+    name: 'Plated Princess',
+    brand: 'Woodland new',
+    price: 1590,
+    qty: 0,
+  },
+];
