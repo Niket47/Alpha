@@ -13,3 +13,32 @@ const App = () => {
 export default App;
 
 >>
+
+list of project practice
+
+2.
+
+<<
+import { View, Text } from 'react-native';
+import React from 'react';
+import Fscreen from './Goal-App/Fscreen';
+
+const App = () => {
+  return <Fscreen />;
+};
+
+export default App;
+>>
+
+3.
+<<
+import { View, Text } from 'react-native';
+import React from 'react';
+import GameApp from './MiniGame/GameApp';
+
+const App = () => {
+  return <GameApp />;
+};
+
+export default App;
+>>

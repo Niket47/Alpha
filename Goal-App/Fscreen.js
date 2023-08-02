@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Button,
-  FlatList,
-  Text,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
+import { View, Button, FlatList, ScrollView, StyleSheet } from 'react-native';
 import GoalList from './Components/GoalList';
 import GoalInput from './Components/GoalInput';
 
 const Fscreen = () => {
-  const theme = useTheme();
   const [visiblemodal, setVisiblemodal] = useState(false);
   const [goallist, setGoallist] = useState([]);
 
@@ -28,7 +18,7 @@ const Fscreen = () => {
   };
 
   const deletehandler = id => {
-    console.log('delet');
+    console.log('delet', id);
     setGoallist(currentgoal => {
       return currentgoal.filter(goal => goal.id !== id);
     });

@@ -1,13 +1,10 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import Fscreen from './Goal-App/Fscreen';
-import { PaperProvider } from 'react-native-paper';
+import GameApp from './MiniGame/GameApp';
+
 const App = () => {
-  return (
-    <PaperProvider>
-      <Fscreen />
-    </PaperProvider>
-  );
+  return <GameApp />;
 };
 
 export default App;
