@@ -1,10 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-const PrimaryBtn = ({ children }) => {
-  const onCXbtnPress = () => {
-    console.log('onCXbtnPress');
-  };
+const PrimaryBtn = ({ children, onCXbtnPress }) => {
   return (
     <View
       style={{

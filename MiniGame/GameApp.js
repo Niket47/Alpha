@@ -1,12 +1,25 @@
 import { View, ImageBackground, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import StartGameScren from './Screens/StartGameScren';
 import LinearGradient from 'react-native-linear-gradient';
+import GameScreen from './Screens/GameScreen';
 
 const GameApp = () => {
   // const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
 
   const my_image = require('../assets/images/peakpx.jpg');
+
+  const [number, setNumber] = useState();
+
+  const confirmInputnumber = pickrednumber => {
+    setNumber(pickrednumber);
+  };
+
+  let screen = <StartGameScren forPickNumber={confirmInputnumber} />;
+
+  if (number) {
+    screen = <GameScreen />;
+  }
 
   return (
     <>
@@ -18,7 +31,7 @@ const GameApp = () => {
           resizeMode="cover"
           imageStyle={styles.BgImagestyle}
           style={styles.image}>
-          <StartGameScren />
+          {screen}
         </ImageBackground>
       </LinearGradient>
     </>
