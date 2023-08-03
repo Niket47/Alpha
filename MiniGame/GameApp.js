@@ -1,4 +1,4 @@
-import { View, ImageBackground, StyleSheet } from 'react-native';
+import { View, ImageBackground, SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import StartGameScren from './Screens/StartGameScren';
 import LinearGradient from 'react-native-linear-gradient';
@@ -18,7 +18,7 @@ const GameApp = () => {
   let screen = <StartGameScren forPickNumber={confirmInputnumber} />;
 
   if (number) {
-    screen = <GameScreen />;
+    screen = <GameScreen nbrpicked={number} />;
   }
 
   return (
@@ -31,7 +31,7 @@ const GameApp = () => {
           resizeMode="cover"
           imageStyle={styles.BgImagestyle}
           style={styles.image}>
-          {screen}
+          <SafeAreaView style={{ flex: 1 }}>{screen}</SafeAreaView>
         </ImageBackground>
       </LinearGradient>
     </>
