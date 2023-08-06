@@ -4,10 +4,9 @@ import { CATEGORIES } from './Data/dummy-data';
 import CategoriesGridTiles from './Components/CategoriesGridTiles';
 
 const CategoriesScreen = ({ navigation }) => {
-  
   const renderCategoriesitem = itemData => {
     const onPressOverview = () => {
-      navigation.navigate('MealsOverview');
+      navigation.navigate('MealsOverview', { catGid: itemData.item.id });
     };
 
     return (
