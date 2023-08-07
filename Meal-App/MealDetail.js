@@ -9,6 +9,7 @@ import {
 import React, { useLayoutEffect } from 'react';
 import { MEALS } from './Data/dummy-data';
 import MealDetailCom from './Components/MealDetailCom';
+import IconBtn from './Components/IconBtn';
 
 const MealDetail = ({ route, navigation }) => {
   const mealid = route.params.mealid;
@@ -22,7 +23,14 @@ const MealDetail = ({ route, navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="tapme" onPress={onheaderpress} />;
+        return (
+          <IconBtn
+            onIconPress={onheaderpress}
+            icon="star"
+            size={20}
+            color="#fff"
+          />
+        );
       },
     });
   }, [navigation, onheaderpress]);
