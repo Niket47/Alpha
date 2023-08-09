@@ -1,11 +1,18 @@
 import { View, Text, FlatList } from 'react-native';
 import React from 'react';
+import ExpenseItems from './ExpenseItems';
 
-const ExpenseLists = () => {
+const renderExpenseItem = itemData => {
+  return <ExpenseItems {...itemData.item} />;
+};
+
+const ExpenseLists = ({ expenses }) => {
   return (
-    <View>
-      <FlatList />
-    </View>
+    <FlatList
+      data={expenses}
+      renderItem={renderExpenseItem}
+      keyExtractor={item => item.id}
+    />
   );
 };
 
