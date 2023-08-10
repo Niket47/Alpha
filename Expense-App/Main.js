@@ -62,7 +62,13 @@ const Main = () => {
     <>
       <StatusBar />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            headerTintColor: '#fff',
+            tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            tabBarActiveTintColor: GlobalStyles.colors.accent500,
+          }}>
           <Stack.Screen
             name="ExpenceOverview"
             component={ExpenceOverview}
@@ -72,7 +78,11 @@ const Main = () => {
           />
 
           {/* <Stack.Screen name="ManageExpence" component={ManageExpenses} /> */}
-          <Stack.Screen name="ManageExpence" component={ManageExpense} />
+          <Stack.Screen
+            name="ManageExpence"
+            component={ManageExpense}
+            options={{ presentation: 'modal' }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
