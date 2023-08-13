@@ -24,10 +24,10 @@ const ExpenseItems = ({ id, description, date, amount }) => {
           <Text style={[styles.textbase, styles.description]}>
             {description}
           </Text>
-          <Text style={styles.description}>{DateFormate(date)}</Text>
+          <Text style={styles.description}>{date}</Text>
         </View>
         <View style={styles.amountcont}>
-          <Text style={styles.amount}>{amount.toFixed(2)}</Text>
+          <Text style={styles.amount}>{amount}</Text>
         </View>
       </View>
     </Pressable>

@@ -3,10 +3,14 @@ import React, { useLayoutEffect } from 'react';
 import IconBtn from '../Components/IconBtn';
 import { GlobalStyles } from '../constants/Styles';
 import CxButton from '../Components/CxButton';
+import ExpenseForm from '../ManageExpenses/ExpenseForm';
+import { useDispatch } from 'react-redux';
+import { addExpense } from '../Redux/ExpesnseSlice';
 
 const ManageExpense = ({ route, navigation }) => {
   const editdexpenseid = route.params?.expenseId;
   const isEditing = !!editdexpenseid;
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -20,12 +24,19 @@ const ManageExpense = ({ route, navigation }) => {
   const cancelhandler = () => {
     navigation.goBack();
   };
-  const Confirmhandler = () => {
+  const Confirmhandler = expenseData => {
     navigation.goBack();
+    // dispatch(addExpense(expenseData));
+    console.log(expenseData, 'Confirmhandler===>');
   };
   return (
     <View style={styles.container}>
-      <View style={styles.buttons}>
+      <ExpenseForm
+        onCancel={cancelhandler}
+        onSubmit={Confirmhandler}
+        submitbtnlabel={isEditing ? 'Update' : 'add'}
+      />
+      {/* <View style={styles.buttons}>
         <CxButton
           style={styles.CxButton}
           mode="flat"
@@ -35,7 +46,7 @@ const ManageExpense = ({ route, navigation }) => {
         <CxButton style={styles.CxButton} onbtnpress={Confirmhandler}>
           {isEditing ? 'Update' : 'add'}
         </CxButton>
-      </View>
+      </View> */}
 
       {isEditing && (
         <View style={styles.deletecon}>

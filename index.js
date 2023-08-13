@@ -7,7 +7,7 @@ import App from './App';
 import { name as appName } from './app.json';
 
 const MainApp = () => (
-  // <Provider store={mystore}>
+  // <Provider store={store}>
   //   <App />
   // </Provider>
   <App />
